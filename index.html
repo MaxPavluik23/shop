@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FintShop - Інтернет-Магазин</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            display: flex;
+        }
+
+            .product h2 {
+                margin-top: 0;
+            }
+
+            .product img {
+                width: 200px;
+                height: auto;
+                display: block;
+                margin-right: 20px;
+            }
+
+        .product-info {
+            flex-grow: 1;
+        }
+
+        .product-price {
+            text-align: center;
+        }
+
+        .pay-button, .cart-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+            .pay-button:hover, .cart-button:hover {
+                background-color: #45a049;
+            }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .store-info {
+            font-size: 14px;
+            color: #ccc;
+            padding: 10px;
+        }
+
+        #cart {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 300px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        #cart-items {
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+
+        #cart-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+            #cart-button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FintShop</h1>
+    </header>
+    <main>
+        <section id="products">
+            <h2>Одяг</h2>
+            <article class="product">
+                <img src="Магаз/завантаження.jpg" alt="Кофта">
+                <div class="product-info">
+                    <h2>Кофта</h2>
+                    <p>Чоловічий світшот під горло відноситься до базової частини гардеробу, тому може бути використаний в поєднанні з іншим одягом для різних стилів. Сьогодні такий світшот знову затребуваний і стає модним трендом.</p>
+                    <p>Ціна: 1 грн</p>
+                    <label for="quantity-cofta">Кількість:</label>
+                    <input type="number" id="quantity-cofta" name="quantity-cofta" value="1" min="1">
+                    <button class="pay-button" onclick="payItem('Кофта', 'https://secure.wayforpay.com/button/b6f58a1b4c0a8', 1, 'quantity-cofta')">Оплатити</button>
+                    <button class="cart-button" onclick="addToCart('Кофта', 'https://secure.wayforpay.com/button/b6f58a1b4c0a8', 1, 'quantity-cofta')">Додати до кошика</button>
+                </div>
+            </article>
+            <article class="product">
+                <img src="Магаз/завантаження3.jpg" alt="Піджак">
+                <div class="product-info">
+                    <h2>Піджак</h2>
+                    <p>Залишайтеся свіжими та комфортними навіть у спекотні дні. Вільний крій зі злегка приспущеними плечима та просторою посадкою на талії. Бічні кишені на блискавці. Блискавки на бічних кишенях зливаються зі швами. Внутрішні кишені по обидва боки для додаткового зберігання.</p>
+                    <p>Ціна: 1 грн</p>
+                    <label for="quantity-pidjak">Кількість:</label>
+                    <input type="number" id="quantity-pidjak" name="quantity-pidjak" value="1" min="1">
+                    <button class="pay-button" onclick="payItem('Піджак', 'https://secure.wayforpay.com/button/b485f777fecc0', 1, 'quantity-pidjak')">Оплатити</button>
+                    <button class="cart-button" onclick="addToCart('Піджак', 'https://secure.wayforpay.com/button/b485f777fecc0', 1, 'quantity-pidjak')">Додати до кошика</button>
+                </div>
+            </article>
+            <article class="product">
+                <img src="Магаз/shopping.jpg" alt="Штани">
+                <div class="product-info">
+                    <h2>Штани</h2>
+                    <p>Штани "Nero" від бренду Smash - це ідеальний варіант для повсякденного носіння. Приємна та якісна бавовняна тканина забезпечать вам легкість та комфорт. Дві великі кишені підійдуть для зберігання важливих речей.</p>
+                    <p>Ціна: 1 грн</p>
+                    <label for="quantity-shtani">Кількість:</label>
+                    <input type="number" id="quantity-shtani" name="quantity-shtani" value="1" min="1">
+                    <button class="pay-button" onclick="payItem('Штани', 'https://secure.wayforpay.com/button/b1f2fef390413', 1, 'quantity-shtani')">Оплатити</button>
+                    <button class="cart-button" onclick="addToCart('Штани', 'https://secure.wayforpay.com/button/b1f2fef390413', 1, 'quantity-shtani')">Додати до кошика</button>
+                </div>
+            </article>
+
+            <h2>Взуття</h2>
+            <article class="product">
+                <img src="Магаз/завантаження2.jpg" alt="Кросівки">
+                <div class="product-info">
+                    <h2>Кросівки</h2>
+                    <p>New Balance поєднують комфорт і спортивний дизайн, і готові до випробувань. Маючи в пріоритеті зручність і підтримку, ці кросівки мають м'яку проміжну підошву для додаткової амортизації, що формується задню частину для екстра підтримки і гумову підошву для витривалості.</p>
+                    <p>Ціна: 1 грн</p>
+                    <label for="quantity-krosivky">Кількість:</label>
+                    <input type="number" id="quantity-krosivky" name="quantity-krosivky" value="1" min="1">
+                    <button class="pay-button" onclick="payItem('Кросівки', 'https://secure.wayforpay.com/button/b65f24cc9b2c6', 1, 'quantity-krosivky')">Оплатити</button>
+                    <button class="cart-button" onclick="addToCart('Кросівки', 'https://secure.wayforpay.com/button/b65f24cc9b2c6', 1, 'quantity-krosivky')">Додати до кошика</button>
+                </div>
+            </article>
+
+            <h2>Аксесуари</h2>
+            <article class="product">
+                <img src="Магаз/HS9742_01_standard.jpg" alt="Спортивна сумка">
+                <div class="product-info">
+                    <h2>Спортивна сумка</h2>
+                    <p>Зберігайте своє екіпірування у порядку. Основне відділення підходить для м'яча та інших речей. Відділення на блискавці на дні для роздільного зберігання вологого та сухого екіпірування. Ремені дозволяють носити сумку в руках та через плече. Невелика внутрішня кишеня та зовнішні кишені на блискавці підходять для цінних дрібниць. 64 х 30 х 30 см. Об'єм сумки: 60 л. 100% поліестер.</p>
+                    <p>Ціна: 1 грн</p>
+                    <label for="quantity-sumka">Кількість:</label>
+                    <input type="number" id="quantity-sumka" name="quantity-sumka" value="1" min="1">
+                    <button class="pay-button" onclick="payItem('Спортивна сумка', 'https://secure.wayforpay.com/button/b3edb909f1d84', 1, 'quantity-sumka')">Оплатити</button>
+                    <button class="cart-button" onclick="addToCart('Спортивна сумка', 'https://secure.wayforpay.com/button/b3edb909f1d84', 1, 'quantity-sumka')">Додати до кошика</button>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <div class="store-info">
+            <p>Адреса: вул.Міцкевича 118/3</p>
+            <p>Телефон: +380972306363</p>
+            <p>Email: fintplay98@gmail.com </p>
+        </div>
+        <div id="cart">
+            <h2>Кошик</h2>
+            <div id="cart-items"></div>
+            <button id="cart-button" onclick="payCart()">Оплатити</button>
+        </div>
+        <p>&copy; 2024 FintShop</p>
+    </footer>
+
+    <script>
+        let cartItems = {};
+
+        function addToCart(itemName, paymentUrl, price, quantityInputId) {
+            const quantity = parseInt(document.getElementById(quantityInputId).value);
+            if (cartItems[itemName]) {
+                cartItems[itemName].quantity += quantity;
+            } else {
+                cartItems[itemName] = { quantity, price, paymentUrl };
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartElement = document.getElementById('cart-items');
+            cartElement.innerHTML = '';
+            Object.keys(cartItems).forEach(itemName => {
+                const item = document.createElement('div');
+                item.classList.add('cart-item');
+                const totalPrice = cartItems[itemName].quantity * cartItems[itemName].price;
+                item.textContent = `${itemName} x ${cartItems[itemName].quantity} (Ціна: ${totalPrice} грн)`;
+                cartElement.appendChild(item);
+            });
+            const cart = document.getElementById('cart');
+            if (Object.keys(cartItems).length > 0) {
+                cart.style.display = 'block';
+            } else {
+                cart.style.display = 'none';
+            }
+        }
+
+        function payItem(itemName, paymentUrl, price, quantityInputId) {
+            const quantity = document.getElementById(quantityInputId).value;
+            const totalPrice = quantity * price;
+            const updatedUrl = `${paymentUrl}?amount=${totalPrice}&quantity=${quantity}`;
+            if (confirm(`Ви дійсно бажаєте оплатити ${itemName} у кількості ${quantity} за ${totalPrice} грн?`)) {
+                window.location.href = updatedUrl;
+            }
+        }
+
+        function payCart() {
+            let delay = 0;
+            Object.keys(cartItems).forEach(itemName => {
+                const item = cartItems[itemName];
+                const totalPrice = item.quantity * item.price;
+                const paymentUrl = `${item.paymentUrl}?amount=${totalPrice}&quantity=${item.quantity}`;
+                setTimeout(() => {
+                    window.open(paymentUrl, '_blank');
+                }, delay);
+                delay += 1000; // затримка в 1 секунду між відкриттям кожного вікна
+            });
+        }
+    </script>
+</body>
+</html>
